@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./contactmanager/contactmanager.module').then(m => m.ContactmanagerModule)
   },
   {
+    path: 'x', 
+    loadChildren: () => import('./x/x.module').then(m => m.XModule)
+  },
+  {
     path: 'demo', 
     loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
   },

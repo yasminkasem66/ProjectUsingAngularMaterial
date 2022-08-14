@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: '', component: ContactmanagerindexComponent,
     children: [
+     { path: ':id', component: MainContentComponent},
      { path: '', component: MainContentComponent},
     ]
   },
