@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/@AppService/models/user';
@@ -14,7 +15,8 @@ const Small_Width_Breakpoint = 720;
 export class SidenavComponent implements OnInit {
   public isScreenSmall!: boolean;
   users!: Observable<User[]>;
-
+  @ViewChild('drawer') sidenav!: MatSidenav;
+  
   constructor(
     private breakPontObserver: BreakpointObserver,
     private userService: UserService,
@@ -31,14 +33,10 @@ export class SidenavComponent implements OnInit {
     this.users = this.userService.users;
     this.userService.loadAll();
 
-    this.users.subscribe((d) => {
-      console.log({d});
-      
+    this.router.events.subscribe(() => {
+      if (this.isScreenSmall) {
+        this.sidenav.close();
+      }
     });
-    // this.router.events.subscribe(() => {
-    //   if (this.isScreenSmall) {
-    //     this.sidenav.close();
-    //   }
-    // });
   }
 }

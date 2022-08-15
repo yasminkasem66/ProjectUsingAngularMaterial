@@ -1,22 +1,15 @@
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { ContactmanagerindexComponent } from './contactmanagerindex.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { MainContentComponent } from './components/main-content/main-content.component';
+ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '', component: ContactmanagerindexComponent,
-    children: [
-     { path: ':id', component: MainContentComponent},
-     { path: '', component: MainContentComponent},
-    ]
-  },
+  //{ path: '', component: DdddComponent},
   { path: '**', redirectTo: '' },
 ];
 
+
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+
 })
-export class ContactmanagerRoutingModule { }
+export class contactmanagerRoutingModule { }

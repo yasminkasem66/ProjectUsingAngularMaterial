@@ -18,8 +18,18 @@ export class MainContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: any) => {
-      const id = params['id'];
-      this.user=this.userService.userById(+id)
+      let id = params['id'];
+      this.user=undefined;
+      if(!id) id=1;
+      // to implement the get user when reloading the page
+      //to load the first user when entering to this module
+      this.userService.users.subscribe((users) => {
+        if(users.length ==0) return;
+        setTimeout(() => {
+          this.user=this.userService.userById(+id)
+        }, 500);
+        
+      });
     })
   }
 

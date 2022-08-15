@@ -7,8 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   template: ` <app-sidenav></app-sidenav> `,
   styles: [],
 })
-export class ContactmanagerindexComponent implements OnInit {
+export class CommonindexComponent implements OnInit {
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    // iconRegistry :injectable service that allows you to associate icon names with svg urls
+    // DomSanitizer protect from cross-site scripting vulnerabilities  when providing asset URLS to the registery 
     iconRegistry.addSvgIconSet(
       sanitizer.bypassSecurityTrustResourceUrl('assets/avatars.svg')
     );
