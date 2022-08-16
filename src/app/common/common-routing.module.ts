@@ -6,15 +6,19 @@ import { MainContentComponent } from './main-content/main-content.component';
 
 const routes: Routes = [
   {
-    path: '', component: CommonindexComponent,
+    path: '',
+    component: CommonindexComponent,
     children: [
-      { path: '', component: MainContentComponent},
-      { path: ':id', component: MainContentComponent},
+      { path: '', component: MainContentComponent },
+      { path: ':id', component: MainContentComponent },
       {
-        path: '', 
-        loadChildren: () => import('../contactmanager/contactmanager.module').then(m => m.ContactmangerModule)
+        path: 'contactmanager/:id',
+        loadChildren: () =>
+          import('../contactmanager/contactmanager.module').then(
+            (m) => m.ContactmangerModule
+          ),
       },
-    ]
+    ],
   },
   { path: '**', redirectTo: '' },
 ];

@@ -1,6 +1,15 @@
 <mat-toolbar color="primary">
-    <button class="sidenav-toggle"  mat-button (click)="toggleSideNav.emit()">
+    <button class="sidenav-toggle" mat-button (click)="toggleSideNav.emit()">
         <mat-icon>menu</mat-icon>
     </button>
     Contact Manger
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
 </mat-toolbar>
