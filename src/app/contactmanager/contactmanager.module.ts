@@ -5,9 +5,10 @@ import { UserComponent } from './user/user.component';
 import { NotesComponent } from './notes/notes.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule } from '@angular/forms';
+import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dailog.component';
 
 @NgModule({
-  declarations: [UserComponent, NotesComponent],
+  declarations: [UserComponent, NotesComponent, NewContactDailogComponent],
   imports: [
     CommonModule,
     contactmanagerRoutingModule,
