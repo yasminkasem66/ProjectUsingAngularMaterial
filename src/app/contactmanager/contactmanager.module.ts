@@ -4,7 +4,7 @@ import { contactmanagerRoutingModule } from './contactmanager-routing.module';
 import { UserComponent } from './user/user.component';
 import { NotesComponent } from './notes/notes.component';
 import { MaterialModule } from '../shared/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dailog.component';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dail
     CommonModule,
     contactmanagerRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
     FormsModule,
   ],
 })

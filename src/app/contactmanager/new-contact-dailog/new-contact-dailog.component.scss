@@ -1,5 +1,15 @@
-:host {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+// :host {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+
+
+  .example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}

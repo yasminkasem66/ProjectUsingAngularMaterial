@@ -1,11 +1,11 @@
-<mat-drawer-container class="app-sidenav-container" autosize>
+<mat-drawer-container class="app-sidenav-container" autosize [class.dark-theme]="isDarkTheme" [dir]="dir">
     <mat-drawer #drawer class="app-sidenav" [mode]="isScreenSmall?'over':'side'" [opened]="!isScreenSmall">
         <mat-toolbar color="primary">
             My Application
         </mat-toolbar>
         <mat-nav-list>
             <mat-list-item *ngFor="let user of users | async">
-                <a matLine [routerLink]="['contactmanager',user.id]" routerLinkActive="router-link-active" >
+                <a matLine [routerLink]="['contactmanager',user.id]" routerLinkActive="router-link-active">
                     <mat-icon svgIcon="{{user.avatar}}"></mat-icon>{{ user.name}}
                 </a>
             </mat-list-item>
@@ -13,7 +13,9 @@
     </mat-drawer>
 
     <div class="app-sidenav-content">
-        <app-toolbar (toggleSideNav)="drawer.toggle()"></app-toolbar>
+        <app-toolbar (toggleSideNav)="drawer.toggle()" (toggleTheme)="toggleTheme()" (toggleDir)="toggleDir()">
+        </app-toolbar>
+
         <div class="wrapper">
             <router-outlet></router-outlet>
             <!-- <app-main-content></app-main-content> -->

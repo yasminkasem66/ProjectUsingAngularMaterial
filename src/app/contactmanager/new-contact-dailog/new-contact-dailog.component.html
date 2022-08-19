@@ -1,26 +1,46 @@
 <h1 mat-dialog-title>Add New Contact</h1>
-<div mat-dialog-content>
-    <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-        <input matInput>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
+<div mat-dialog-content class="example-container">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Avatar</mat-label>
+    <mat-select [(ngModel)]="user.avatar">
+      <mat-select-trigger>
+        <mat-icon svgIcon="{{user.avatar}}"></mat-icon> {{user.avatar}}
+      </mat-select-trigger>
+      <mat-option *ngFor="let avatar of avatars" [value]="avatar">
+        <mat-icon svgIcon="{{avatar}}"></mat-icon> {{avatar}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="name" required>
+    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Born</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="user.birthDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Bio</mat-label>
+    <textarea matInput [(ngModel)]="user.bio"></textarea>
+  </mat-form-field>
+
 </div>
 <div mat-dialog-actions>
-    <button mat-button mat-dialog-close cdkFocusInitial color="primary" (click)="onSave()">
-        <mat-icon>save</mat-icon>save
-    </button>
-    <button mat-button mat-dialog-close color="secondary" (click)="dismiss()">
-        <mat-icon>cancel</mat-icon>cancel
-    </button>
+  <button mat-button mat-dialog-close cdkFocusInitial color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon>save
+  </button>
+  <button mat-button mat-dialog-close color="secondary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon>cancel
+  </button>
 </div>
