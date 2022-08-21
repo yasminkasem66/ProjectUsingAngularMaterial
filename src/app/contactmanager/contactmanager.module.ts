@@ -6,6 +6,8 @@ import { NotesComponent } from './notes/notes.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule } from '@angular/forms';
 import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dailog.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [UserComponent, NotesComponent, NewContactDailogComponent],
@@ -14,6 +16,8 @@ import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dail
     contactmanagerRoutingModule,
     MaterialModule,
     FormsModule,
+    DragDropModule,
+    
   ],
 })
 export class ContactmangerModule {}
