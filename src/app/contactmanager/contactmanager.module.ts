@@ -7,10 +7,11 @@ import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewContactDailogComponent } from './new-contact-dailog/new-contact-dailog.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
-  declarations: [UserComponent, NotesComponent, NewContactDailogComponent],
+  declarations: [UserComponent, NotesComponent, NewContactDailogComponent, SettingsComponent],
   imports: [
     CommonModule,
     contactmanagerRoutingModule,

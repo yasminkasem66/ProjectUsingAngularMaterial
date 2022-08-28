@@ -1,0 +1,107 @@
+
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="card-title" translate>setting.title</h5>
+    </div>
+
+    <div class="card-body">
+        <form *ngIf="settingForm" (ngSubmit)="saveSetting()" [formGroup]="settingForm">
+            <div class="col-md-12">
+
+                <div formArrayName="allValuesControls" *ngFor="let item of fc.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <div class="form-group row">
+
+                            <hr *ngIf="item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks">
+                            <span class="col-md-12 p-2"
+                                *ngIf="item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks"
+                                translate>setting.RelatedBooks</span>
+                            <mat-form-field appearance="outline" class="col-12 col-md-6 col-lg-6 mb-2">
+                                <mat-label translate>setting.{{settingModel[i].name}}</mat-label>
+                                <input matInput type="text" formControlName="enValue">
+                                <mat-icon
+                                    *ngIf="item.get('settingId')?.value == settingEnum.GeneralFreeSamplePercentage"
+                                    matPrefix>money</mat-icon>
+                                <mat-icon *ngIf="item.get('settingId')?.value == settingEnum.ContactUs" matPrefix>
+                                    alternate_email</mat-icon>
+                                <mat-icon *ngIf="item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks"
+                                    matPrefix> format_list_numbered_rtl</mat-icon>
+                                <mat-error
+                                    *ngIf="item.get('enValue')?.invalid && (item.get('enValue')?.dirty || item.get('enValue')?.touched || submitted)">
+                                    <span *ngIf="item.get('enValue')?.errors?.['required']" translate>
+                                        requiredEnter
+                                    </span>
+                                    <span
+                                        *ngIf="item.get('enValue')?.errors?.['required'] && item.get('settingId')?.value == settingEnum.GeneralFreeSamplePercentage"
+                                        translate>
+                                        setting.{{settingModel[i].name}}
+                                    </span>
+                                    <span
+                                        *ngIf="item.get('enValue')?.errors?.['required'] && item.get('settingId')?.value == settingEnum.ContactUs"
+                                        translate>
+                                        setting.{{settingModel[i].name}}
+                                    </span>
+                                    <span
+                                        *ngIf="item.get('enValue')?.errors?.['required'] && item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks"
+                                        translate>
+                                        setting.{{settingModel[i].name}}
+                                    </span>
+                                    <span *ngIf="  item.get('enValue')?.errors?.['pattern'] && item.get('settingId')?.value == settingEnum.GeneralFreeSamplePercentage || item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks
+                                    " translate>
+                                        setting.acceptNumbersOnly
+                                    </span>
+                                    <span *ngIf="item.get('enValue')?.errors?.['min']" translate>
+
+                                        <span translate>setting.greaterThanValidationMessage</span>
+                                        <span translate>{{item.get('enValue')?.errors?.['min'].min}}</span>
+                                    </span>
+                                    <span *ngIf="item.get('enValue')?.errors?.['max']" translate>
+                                        <span translate>setting.lessThanValidationMessage</span>
+                                        <span translate>{{item.get('enValue')?.errors?.['max'].max}}</span>
+
+                                    </span>
+                                    <span
+                                        *ngIf="item.get('enValue')?.errors?.['pattern'] && item.get('settingId')?.value == settingEnum.ContactUs"
+                                        translate>
+                                        setting.emailValidationMessage
+                                    </span>
+                                    <span *ngIf="item.get('enValue')?.errors?.['maxlength']" translate>
+                                        <span translate>MaxLengthCharacters</span>{{item.get('enValue')?.errors?.['maxlength'].requiredLength}}
+                
+                                    </span>
+                                    <!-- <span *ngIf="item.get('enValue')?.errors?.['whitespace']" translate>
+                                        nospaces
+                                    </span> -->
+
+                                    <!-- <span *ngIf="item.get('enValue')?.errors?.['acceptOnlyNumbers'] && item.get('settingId')?.value == settingEnum.GeneralFreeSamplePercentage || item.get('settingId')?.value == settingEnum.NumberOfRelatedBooks
+                                    " translate>
+                                        series.acceptNumbersOnly
+                                    </span> -->
+
+                                </mat-error>
+                            </mat-form-field>
+
+                            <!-- <span *ngIf="item.get('settingId')?.value == settingEnum.BookNumber"
+                                translate>setting.ChooseFrom</span>
+                            <mat-checkbox
+                                *ngIf="item.get('settingId')?.value == settingEnum.AuthorBookNumber || item.get('settingId')?.value == settingEnum.PublisherBookNumber"
+                                color="primary" class="example-margin" formControlName="enValue">
+                                <span translate>setting.{{settingModel[i].name}}</span>
+                            </mat-checkbox> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 text-end mb-3">
+                    <button type="submit" mat-raised-button class="mx-2" color="accent"> <span
+                            translate>
+                            save</span> </button>
+                    <button type="button" mat-raised-button color="primary" (click)="backToHome()"><span
+                            translate>cancel
+                        </span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
